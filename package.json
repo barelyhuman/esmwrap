@@ -8,6 +8,9 @@
   "bugs": {
     "url": "https://github.com/barelyhuman/esmwrap/issues"
   },
+  "files": [
+    "esmwrap.js"
+  ],
   "author": {
     "name": "Reaper",
     "email": "ahoy@barelyhuman.dev"
