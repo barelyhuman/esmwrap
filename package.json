@@ -1,0 +1,56 @@
+{
+  "name": "esmwrap",
+  "version": "0.0.0",
+  "description": "straightforward esm wrapper generator",
+  "main": "index.js",
+  "bin": "esmwrap.js",
+  "repository": "https://github.com/barelyhuman/esmwrap",
+  "bugs": {
+    "url": "https://github.com/barelyhuman/esmwrap/issues"
+  },
+  "author": {
+    "name": "Reaper",
+    "email": "ahoy@barelyhuman.dev"
+  },
+  "scripts": {
+    "bundlesize": "GITHUB_TOKEN='' bundlesize",
+    "prepare": "husky install; npm run bundlesize",
+    "fix": "npx standard --fix"
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run fix"
+    ]
+  },
+  "bundlesize": [
+    {
+      "path": "./esmwrap.js",
+      "maxSize": "2 kB",
+      "compression": "brotli"
+    },
+    {
+      "path": "./esmwrap.js",
+      "maxSize": "2 kB",
+      "compression": "none"
+    },
+    {
+      "path": "./esmwrap.js",
+      "maxSize": "2 kB",
+      "compression": "gzip"
+    }
+  ],
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "glob": "^7.1.7"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "bundlesize": "^0.18.1",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
+    "standard": "^16.0.3"
+  }
+}
