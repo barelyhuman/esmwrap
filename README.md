@@ -6,7 +6,6 @@ ESM wrapper generator that just get's the job done
 
 <img alt="GitHub" src="https://img.shields.io/github/license/barelyhuman/use-set-state?logoColor=000&colorA=000000&colorB=000000">
 <a href="https://standardjs.com"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg?colorA=000000&colorB=000000" alt="JavaScript Style Guide"></a>
-<a href="https://bundlephobia.com/result?p=esmwrap"><img src="https://img.shields.io/bundlephobia/min/esmwrap?label=bundle%20size&amp;style=flat&amp;colorA=000000&amp;colorB=000000" alt="Build Size"></a>
 <a href="https://www.npmjs.com/package/esmwrap"><img src="https://img.shields.io/npm/v/esmwrap?style=flat&amp;colorA=000000&amp;colorB=000000" alt="Version"></a>
 <a href="https://www.npmjs.com/package/esmwrap"><img src="https://img.shields.io/npm/dt/esmwrap.svg?style=flat&amp;colorA=000000&amp;colorB=000000" alt="Downloads"></a>
 
