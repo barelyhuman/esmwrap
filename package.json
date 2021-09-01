@@ -1,6 +1,6 @@
 {
   "name": "esmwrap",
-  "version": "0.0.4-0",
+  "version": "0.0.4",
   "description": "straightforward esm wrapper generator",
   "bin": "esmwrap.js",
   "repository": "https://github.com/barelyhuman/esmwrap",
