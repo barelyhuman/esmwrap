@@ -1,8 +1,6 @@
-#! /usr/bin/env node
-
-const { mkdirSync, writeFileSync } = require('fs')
-const glob = require('glob')
-const { resolve, join, relative } = require('path')
+const { lstatSync, mkdirSync, readdirSync, writeFileSync } = require('fs')
+const { basename, join, relative, resolve } = require('path')
+const picomatch = require('picomatch')
 
 async function cli () {
   const [source, destinationDirectory] = parseArgs()
@@ -13,9 +11,10 @@ async function cli () {
 async function esmwrap (source, destinationDirectory) {
   const matchingFiles = await parseGlob(source)
   matchingFiles.forEach((file) => {
+    const _file = basename(file)
     const _wrapperText = getWrapperText(file, destinationDirectory)
     mkdirSync(destinationDirectory, { recursive: true })
-    const filePath = join(destinationDirectory, file)
+    const filePath = join(destinationDirectory, _file)
     writeFileSync(filePath, _wrapperText)
   })
 }
@@ -67,19 +66,46 @@ Usage esmwrap
     $ esmwrap input-glob output-directory
     
     eg:
-      $ esmwrap ./dist/*.js ./dist/esm
+      $ esmwrap './dist/*.js' ./dist/esm
     `)
 }
 
 async function parseGlob (pattern) {
-  return new Promise((resolve) => {
-    glob(pattern, (err, matches) => {
-      if (err) throw err
-      resolve(matches)
-    })
+  const matchingFiles = findMatchingFiles(pattern, '.', '{.git,node_modules}')
+  return matchingFiles
+}
+
+function findMatchingFiles (pattern, directory, ignorePattern) {
+  const matcher = picomatch(pattern)
+  const ignoreMatcher = picomatch(ignorePattern)
+  const directoryTree = readdirSync(directory)
+  let matchedItems = []
+  const pendingDirectories = []
+  directoryTree.forEach((item) => {
+    const fullItemPath = join(directory, item)
+
+    if (ignoreMatcher(item)) {
+      return
+    }
+    if (matcher(fullItemPath)) {
+      return matchedItems.push(fullItemPath)
+    }
+    const stat = lstatSync(fullItemPath)
+    if (stat.isDirectory()) {
+      pendingDirectories.push(fullItemPath)
+    }
+    return true
   })
+
+  while (pendingDirectories.length > 0) {
+    const dir = pendingDirectories.shift()
+    const _matchingFiles = findMatchingFiles(pattern, dir, ignorePattern)
+    matchedItems = matchedItems.concat(_matchingFiles)
+  }
+
+  return matchedItems
 }
 
 cli()
 
-exports.esmwarp = esmwrap
+exports.esmwrap = esmwrap

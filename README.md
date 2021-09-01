@@ -2,6 +2,8 @@
 
 ESM wrapper generator that just get's the job done
 
+**UNDER HEAVY DEVELOPMENT, THE API MIGHT CHANGE**
+
 ## Badges
 
 <a href="/LICENSE"><img alt="GitHub" src="https://img.shields.io/github/license/barelyhuman/esmwrap?logoColor=000&colorA=000000&colorB=000000"></a>
@@ -11,12 +13,13 @@ ESM wrapper generator that just get's the job done
 
 ## Features
 
-- 🤏 Tiny (**589B** brotli, **686B** gzipped)
+- 🤏 Tiny, less than 1KB (**894B** brotli, **1KB** gzipped)
 - ✨ Supports input globs
+- 🌳 Tree Shakeable
+- 📦 Programmable API supports ESM Module
+- 🐕 Built by Dogfooding
 
 ## Installation
-
-Install my-project with npm
 
 ```bash
   npm install -D esmwrap
