@@ -56,6 +56,12 @@ import { esmwrap } from "esmwrap";
 esmwrap("./dist/*.js", "./dist/esm");
 ```
 
+## Roadmap
+
+- [ ] Add Tests
+- [ ] Add suffix support (Folks might want it to output with a different name , eg: `index.esm.js`);
+- [ ] Optimize the file matcher
+
 ## Contributing
 
 Contributions are always welcome!
