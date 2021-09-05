@@ -48,7 +48,7 @@ Usage esmwrap
 
 ## API Reference
 
-#### `esmwrap(sourceGlob: PathGlob ,destinationDirectory: string ,options: ESMWRAPOptions )`
+#### esmwrap(sourceGlob: [PathGlob](#pathglob) ,destinationDirectory: string ,options: [ESMWRAPOptions](#esmwrapoptions))
 
 **Require Syntax**
 
@@ -68,11 +68,13 @@ esmwrap("./dist/*.js", "./dist/esm", { options: ".mjs" });
 
 ## Types
 
-#### `ESMWRAPOptions`
+#### `PathGlob`
 
 ```ts
 type PathGlob = string;
 ```
+
+#### `ESMWRAPOptions`
 
 ```ts
 type ESMWRAPOptions = {
