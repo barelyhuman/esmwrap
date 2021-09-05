@@ -9,8 +9,10 @@
   },
   "files": [
     "esmwrap.js",
+    "esmwrap.d.ts",
     "esm/esmwrap.js"
   ],
+  "types": "esmwrap.d.ts",
   "exports": {
     ".": {
       "import": "./esm/esmwrap.js",

@@ -22,22 +22,18 @@ async function esmwrap (source, destinationDirectory) {
 function getWrapperText (file, destination) {
   const cjsModule = require(resolve(file))
   const cjsModExports = new Set(Object.getOwnPropertyNames(cjsModule))
-  let wrapperString = `import _module from '${relativePath(file, destination)}';
-  
-`
+  let wrapperString = `import _module from '${relativePath(
+    file,
+    destination
+  )}';\n\n`
 
   for (const key of cjsModExports.keys()) {
     if (key === '__esModule') {
       continue
     }
-
-    // key === "default"
-
     wrapperString += `export const ${key} = _module.${key};\n`
   }
-
   wrapperString += 'export default _module;'
-
   return wrapperString
 }
 
