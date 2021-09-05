@@ -25,7 +25,7 @@
   },
   "scripts": {
     "clean": "rm -rf esm",
-    "build": "node esmwrap.js './*.js' esm",
+    "build": "node esmwrap.js './*.{js,cjs}' esm",
     "bundlesize": "GITHUB_TOKEN='' bundlesize",
     "prepare": "husky install; npm run bundlesize",
     "fix": "wrap --fix"
@@ -43,11 +43,6 @@
     },
     {
       "path": "./esmwrap.js",
-      "maxSize": "3 kB",
-      "compression": "none"
-    },
-    {
-      "path": "./esmwrap.js",
       "maxSize": "2 kB",
       "compression": "gzip"
     },
@@ -55,11 +50,6 @@
       "path": "./esm/esmwrap.js",
       "maxSize": "2 kB",
       "compression": "brotli"
-    },
-    {
-      "path": "./esm/esmwrap.js",
-      "maxSize": "2 kB",
-      "compression": "none"
     },
     {
       "path": "./esm/esmwrap.js",

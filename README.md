@@ -30,22 +30,32 @@ ESM wrapper generator that just get's the job done
 ## Usage/Examples
 
 ```bash
-$ esmwrap <input-glob> <output-directory>
+Usage esmwrap
+    $ esmwrap input-glob output-directory
 
-eg:
-$ esmwrap ./dist/*.js ./dist/esm
+    Options
+      -ext the target file extension (eg: .mjs)
+      -h   print this help doc
+
+    eg:
+      $ esmwrap './dist/*.js' ./dist/esm
+        ✔ ESM Wrappers Created!
+
+      $ esmwrap './dist/*.js' ./dist/esm -ext .mjs
+        ✔ ESM Wrappers Created!
+
 ```
 
 ## API Reference
 
-#### `esmwrap(sourceGlob,destinationDirectory)`
+#### `esmwrap(sourceGlob: PathGlob ,destinationDirectory: string ,options: ESMWRAPOptions )`
 
 **Require Syntax**
 
 ```js
 const { esmwrap } = require("esmwrap");
 
-esmwrap("./dist/*.js", "./dist/esm");
+esmwrap("./dist/*.js", "./dist/esm", { options: ".esm.js" });
 ```
 
 **Import Syntax**
@@ -53,13 +63,27 @@ esmwrap("./dist/*.js", "./dist/esm");
 ```js
 import { esmwrap } from "esmwrap";
 
-esmwrap("./dist/*.js", "./dist/esm");
+esmwrap("./dist/*.js", "./dist/esm", { options: ".mjs" });
+```
+
+## Types
+
+#### `ESMWRAPOptions`
+
+```ts
+type PathGlob = string;
+```
+
+```ts
+type ESMWRAPOptions = {
+  extenstion: string;
+};
 ```
 
 ## Roadmap
 
 - [ ] Add Tests
-- [ ] Add suffix support (Folks might want it to output with a different name , eg: `index.esm.js`);
+- [x] Add suffix support (Folks might want it to output with a different name , eg: `index.esm.js`)
 - [ ] Optimize the file matcher
 
 ## Contributing

@@ -1,3 +1,6 @@
 declare type PathGlob = string;
-declare function esmwrap(source: PathGlob, destinationDirectory: PathGlob): Promise<void>;
+declare type ESMWRAPOptions = {
+  extenstion: string;
+};
+declare function esmwrap(source: PathGlob, destinationDirectory: PathGlob, options: ESMWRAPOptions): Promise<void>;
 export { esmwrap };
