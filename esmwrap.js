@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 const { lstatSync, mkdirSync, readdirSync, writeFileSync } = require('fs')
 const { basename, join, relative, resolve } = require('path')
 const picomatch = require('picomatch')
